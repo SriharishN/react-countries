@@ -12,10 +12,10 @@ function CountryDetail({ data, getCountry, match }) {
         getCountry(countryCode)
     }, [getCountry, countryCode])
     
-    const { country,loading } = data
+    const { country,country_loading } = data
     return (
         <>
-        { loading ? (<div className="loading-data">
+        { country_loading? (<div className="loading-data">
             <img src={loadingImage} alt="loader"/>
         </div>) :(
         <>
@@ -25,11 +25,12 @@ function CountryDetail({ data, getCountry, match }) {
         <div className="country-detail">
         <img src={country.flag} alt={countryCode}/>
          <h1>{country.name}</h1>
-         <h3>{country.capital}</h3>
-         <h3>{country.nativeName}</h3>
-         <h3>{country.currencies.map((currency,index)=>
+         <h3>Country Capital: {country.capital}</h3>
+         <h3>Country Native name: {country.nativeName}</h3>
+         <h3>Currencies used :</h3>
+             <h4>{country.currencies.map((currency,index)=>
              <li key={index}>{currency.name}</li>
-         ) }</h3>
+         ) }  </h4>
         </div>
         </>
         )}

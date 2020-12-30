@@ -15,12 +15,12 @@ function SearchBox({ data, searchCountries }) {
         setSearch(event.target.value);
     }
 
-    const { countries, loading } = data
+    const { countries, data_loading, country_loading } = data
 
     return (
         <div className="search-field">
             <input type="text" onChange={onChanged} value={search}></input>
-            <Countries countries={countries} loader={loading}></Countries>
+            <Countries countries={countries} loader={data_loading} country_loader={country_loading}></Countries>
             
             {/* {countries.map((country,index)=>{
                 return(

@@ -3,7 +3,8 @@ import { GET_COUNTRY, LOADING_COUNTRY, LOAD_COUNTRIES, SEARCH_COUNTRIES } from "
 const initialState = {
     countries:[],
     country:{},
-    loading: true
+    data_loading: true,
+    country_loading: true
 }
 
 export default function reducerCall(state=initialState, action){
@@ -13,7 +14,8 @@ export default function reducerCall(state=initialState, action){
             return {
                 ...state,
                 countries: country,
-                loading:false
+                data_loading: false,
+                country_loading:true
             }
 
         case LOAD_COUNTRIES:
@@ -24,7 +26,8 @@ export default function reducerCall(state=initialState, action){
         case GET_COUNTRY:
             return {
                 ...state,
-                loading:false,
+                data_loading:true,
+                country_loading:false,
                 country: action.payload
             }
         case LOADING_COUNTRY:
