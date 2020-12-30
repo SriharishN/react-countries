@@ -119,3 +119,18 @@ a{
 .loading-data{
   padding: 270px 0;
 }
+
+@media only screen and (min-width:360px){
+  input[type=text]:focus {
+    width: 300px;
+  }
+  .header{
+    margin-left: 132px;
+    margin-bottom: 16px;
+  }
+  .country-detail > img{
+    width: 90%;
+    object-fit: contain;
+    height: 200px;
+  }
+}
