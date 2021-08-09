@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getCountry } from '../redux/action'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import loadingImage from '../resources/loading.gif'
 
-function CountryDetail({ data, getCountry, match }) {
-    const countryCode = match.params.id
-    
+function CountryDetail({ match }) {
+    const countryCode = match.params.id;
+    const data = useSelector(state => state.data);
+    const dispatchCountry = useDispatch();
+
     useEffect(() => {
-        getCountry(countryCode)
-    }, [getCountry, countryCode])
+        dispatchCountry(getCountry(countryCode));
+    }, [dispatchCountry, countryCode])
     
     const { country,country_loading } = data
     return (
@@ -39,13 +40,4 @@ function CountryDetail({ data, getCountry, match }) {
     )
 }
 
-CountryDetail.propTypes = {
-    data: PropTypes.object.isRequired,
-    getCountry: PropTypes.func.isRequired
-}
-
-const mapStateToProps = (state) => ({
-    data: state.data
-})
-
-export default connect(mapStateToProps, { getCountry })(CountryDetail) 
+export default CountryDetail
